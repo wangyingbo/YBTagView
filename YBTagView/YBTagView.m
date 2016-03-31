@@ -52,7 +52,7 @@
         self.center = point;
         _selfCenter = point;
         
-        self.backgroundColor = [UIColor lightGrayColor];
+//        self.backgroundColor = [UIColor lightGrayColor];
         self.isPanGestureOnTagViewed = YES;
         
         isDefault = YES;
@@ -181,7 +181,7 @@
     
     if (isDefault)
     {
-        CGFloat selfW = tagW + CenterViewW+space;
+        CGFloat selfW = tagW + CenterViewW+threeTagSpace;
         CGFloat selfH = TagLabelH;
         self.width = selfW;
         self.height = selfH;
@@ -210,6 +210,7 @@
         }];
         [self.layer addSublayer:branch];
         _tagBranchOne = branch;
+        _tagOne = label;
         
         isDefault = NO;
     }
@@ -218,7 +219,32 @@
         switch (tagStyle) {
             case YBOneTagStyleRightAskew:
             {
+                [self dismissBranchWhenOneTag];
+                CGFloat selfW = tagW + CenterViewW+threeTagSpace;
+                CGFloat selfH = TagLabelH;
+                self.width = selfW;
+                self.height = selfH;
+                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y+CenterViewH/4);
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
                 
+                _tagCenterView.frame = CGRectMake(0, 0, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width- tagW, 0, tagW, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x +tagW , TagLabelH);
+                YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+                [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:branch];
+                _tagBranchOne = branch;
+
             }
                 break;
             case YBOneTagStyleLeftAskew:
@@ -231,16 +257,72 @@
                 [self checkIsOut];
                 
                 _tagCenterView.frame = CGRectMake(self.width - CenterViewW, 0, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width-CenterViewW- space-tagW, 0, tagW, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x+tagW, TagLabelH);
+                
+                YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+                [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:branch];
+                _tagBranchOne = branch;
             }
                 break;
             case YBOneTagStyleLeftVertical:
             {
+                [self dismissBranchWhenOneTag];
+                CGFloat selfW = tagW + CenterViewW+threeTagSpace;
+                CGFloat selfH = TagLabelH*1.5;
+                self.width = selfW;
+                self.height = selfH;
+                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y-TagLabelH/4);
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
                 
+                _tagCenterView.frame = CGRectMake(self.width - CenterViewW, TagLabelH - CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width-CenterViewW-tagW, 0, tagW, TagLabelH);
+                YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+                [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:branch];
+                _tagBranchOne = branch;
             }
                 break;
             case YBOneTagStyleRightVertical:
             {
+                [self dismissBranchWhenOneTag];
+                CGPoint point = CGPointMake(_selfCenter.x+self.width-CenterViewW, _selfCenter.y);
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
                 
+                _tagCenterView.frame = CGRectMake(0, TagLabelH - CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(CenterViewW, 0, tagW, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW, TagLabelH);
+                YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+                [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:branch];
+                _tagBranchOne = branch;
             }
                 break;
         }
