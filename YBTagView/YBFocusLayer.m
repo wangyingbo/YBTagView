@@ -35,7 +35,7 @@
     _animationDuration = 1.5;
     
     self.repeatCount = INFINITY;
-    self.radius = 10;
+    self.radius = 15;
     self.focusLayerNumber = 1;
     self.instanceDelay = 1;
     self.backgroundColor = [[UIColor whiteColor] CGColor];

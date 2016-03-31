@@ -32,8 +32,8 @@
     [super layoutSubviews];
     self.button.frame = self.bounds;
     
-    static CGFloat width = 5;
-    static CGFloat height = 5;
+    static CGFloat width = 8;
+    static CGFloat height = 8;
     CGRect rect = CGRectMake(self.bounds.size.width/2 - width/2, self.bounds.size.height/2 - height/2, width, height);
     self.imageView.frame = rect;
 //    NSLog(@"..............%@",NSStringFromCGRect(self.imageView.frame));
