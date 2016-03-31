@@ -28,7 +28,11 @@
 
 @property (nonatomic, strong) YBCenterView *tagCenterView;
 
-@property (nonatomic, assign) NSInteger buttonTag;
+/**4个tag的时候默认启动顺序*/
+@property (nonatomic, assign) NSInteger buttonFourTag;
+/**3个tag的时候默认启动顺序*/
+@property (nonatomic, assign) NSInteger buttonThirdTag;
+
 
 @end
 
@@ -47,7 +51,9 @@
 //        self.backgroundColor = [UIColor lightGrayColor];
         self.isPanGestureOnTagViewed = YES;
         
-        _buttonTag = 2;//默认启动的顺序
+        _buttonFourTag = 2;//4个tag的时候默认启动的顺序
+        isDefault = YES;
+        _buttonThirdTag = 0;//3个tag的时候默认启动的顺序
     }
     
     return self;
@@ -56,7 +62,7 @@
 
 - (void)setTagArray:(NSArray *)tagArray
 {
-    [self checkIsOut];
+    
     
     //获取tag标签字符串的长度
     _tagArray = tagArray;
@@ -74,8 +80,7 @@
     }
     _tagWMutArr = mutArr;
 
-    //根据tagArray添加tag,默认全部在右边
-    [self addTag:YBFourTagStyleTwoLeft];//默认启动的顺序
+    [self addTag];//默认启动的顺序
 }
 
 
@@ -138,15 +143,15 @@
 /**
  *  根据数组元素数目，决定添加多少个tag
  */
-- (void)addTag:(YBFourTagStyle)tagStyle
+- (void)addTag
 {
     if (_tagArray.count == 4)
     {
-        [self addFourTag:tagStyle];
+        [self addFourTag:YBFourTagStyleTwoLeft];//4个tag的时候默认启动的顺序
         
     }else if (_tagArray.count == 3)
     {
-        
+        [self addThirdTag:YBThreeTagStyleZeroLeft];
         
     }else if (_tagArray.count == 2)
     {
@@ -157,6 +162,144 @@
         
     }
 }
+
+/**
+ *  添加有3个分支tag的标签
+ */
+- (void)addThirdTag:(YBThreeTagStyle)tagStyle
+{
+    //获得tag上文字的最大宽度
+    CGFloat mostW = 0;
+    for (NSString *string in _tagWMutArr)
+    {
+        CGFloat tagW = [string floatValue];
+        if (tagW - mostW > 0)
+        {
+            mostW = tagW;
+        }
+    }
+    
+    NSString *tagWStr;
+    CGFloat tagW0 = 0;
+    CGFloat tagW1 = 0;
+    CGFloat tagW2 = 0;
+    for (int i = 0; i < _tagWMutArr.count; i ++) {
+        tagWStr = [_tagWMutArr objectAtIndex:i];
+        if (i == 0) {
+            tagW0 = [tagWStr floatValue];
+        }else if (i == 1)
+        {
+            tagW1 = [tagWStr floatValue];
+        }else if (i == 2){
+            tagW2 = [tagWStr floatValue];
+        }
+    }
+
+    if (isDefault)
+    {
+        CGFloat selfW = mostW + CenterViewW;
+        CGFloat selfH = TagLabelH * 3;
+        self.width = selfW;
+        self.height = selfH;
+        CGPoint point = CGPointMake(_selfCenter.x + self.width/2 - CenterViewW/2, _selfCenter.y - TagLabelH*0.5);
+        self.center = point;
+        //检查是否拖动出界
+        [self checkIsOut];
+        
+        YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(0, TagLabelH*1.5-3, CenterViewW, CenterViewH)];//self.width - mostW - CenterViewW/2 - 30
+        _tagViewCenterPoint = centerView.center;
+        [centerView.button addTarget:self action:@selector(thirdTagChangeState:) forControlEvents:UIControlEventTouchUpInside];
+        [centerView startAnimation];
+        [self addSubview:centerView];
+        _tagCenterView = centerView;
+        
+        for (int i = 0; i < _tagArray.count; i ++)
+        {
+            CGFloat tagW = [[_tagWMutArr objectAtIndex:i] floatValue] + 5;
+            NSString *tagString = [_tagArray objectAtIndex:i];
+            
+            YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(CenterViewW/2, TagLabelH*i, tagW, TagLabelH) withString:tagString];
+            [self addSubview:label];
+            
+            label.leftPoint = CGPointMake(label.x, label.y + label.height - 0.5);
+            label.rightPoint = CGPointMake(label.x + label.width, label.y + label.height);
+            YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+            [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:label.leftPoint endPoint:label.rightPoint withBlock:^(CGFloat time) {
+                CGFloat timeF = time;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeF * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [label delay];
+                });
+            }];
+            [self.layer addSublayer:branch];
+            
+            if (i == 0) {
+                _tagOne = label;
+                _tagBranchOne = branch;
+            }else if (i == 1)
+            {
+                _tagTwo = label;
+                _tagBranchTwo = branch;
+            }else if (i == 2)
+            {
+                _tagThree = label;
+                _tagBranchThree = branch;
+            }
+        }
+    
+        isDefault = NO;
+    }else
+    {
+        switch (tagStyle) {
+            case YBThreeTagStyleZeroLeft:
+                
+                break;
+            case YBThreeTagStyleOneLeft:
+                
+                break;
+            case YBThreeTagStyleTwoLeft:
+                
+                break;
+            case YBThreeTagStyleAllLeft:
+                
+                break;
+                
+            default:
+                break;
+        }
+ 
+    }
+    
+}
+
+/**
+ *  3个tag的时候改变标签状态
+ */
+- (void)thirdTagChangeState:(UIButton *)button
+{
+    _buttonThirdTag ++;
+    if (_buttonThirdTag == 4) {
+        _buttonThirdTag = 0;
+    }
+    
+    switch (_buttonThirdTag) {
+        case YBThreeTagStyleZeroLeft:
+            NSLog(@"0个在左边");
+            break;
+        case YBThreeTagStyleOneLeft:
+            NSLog(@"1个在左边，两个右边");
+            break;
+        case YBThreeTagStyleTwoLeft:
+            NSLog(@"2个在左边,1个在右边");
+            break;
+        case YBThreeTagStyleAllLeft:
+            NSLog(@"都在左边");
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 
 /**
@@ -264,6 +407,7 @@
             self.width = selfW;
             self.height = selfH;
             self.center = _selfCenter;
+            [self checkIsOut];
             
             YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(self.width/2-CenterViewW/2, self.height/2 - CenterViewH/2, CenterViewW, CenterViewH)];
             _tagViewCenterPoint = centerView.center;
@@ -340,6 +484,7 @@
             self.height = selfH;
             CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y);//TagLabelH/2
             self.center = point;
+            [self checkIsOut];
             
             YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(self.width/2-CenterViewW/2, self.height/2 - CenterViewH/2, CenterViewW, CenterViewH)];
             _tagViewCenterPoint = centerView.center;
@@ -454,7 +599,7 @@
                     _tagBranchFour = branch;
                     
                 }else{
-                    YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(self.width/2-CenterViewW/2-space-tagW0, TagLabelH*i, tagW, TagLabelH) withString:tagString];
+                    YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(self.width/2-CenterViewW/2-space-tagW, TagLabelH*i, tagW, TagLabelH) withString:tagString];
                     [self addSubview:label];
                     
                     label.leftPoint = CGPointMake(label.x, label.y + label.height - 0.5);
@@ -552,16 +697,16 @@
 
 
 /**
- *  改变标签状态
+ *  四个tag的时候改变标签状态
  */
 - (void)fourTagChangeState:(UIButton *)button
 {
-    _buttonTag ++;
-    if (_buttonTag == 5) {
-        _buttonTag = 0;
+    _buttonFourTag ++;
+    if (_buttonFourTag == 5) {
+        _buttonFourTag = 0;
     }
     
-    switch (_buttonTag) {
+    switch (_buttonFourTag) {
         case YBFourTagStyleZeroLeft:
             [self addFourTag:YBFourTagStyleZeroLeft];
             break;
