@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68E977D51CA9182400E8650F"
-               BuildableName = "YBTagView.app"
-               BlueprintName = "YBTagView"
-               ReferencedContainer = "container:YBTagView.xcodeproj">
+               BuildableName = "YBTagViewDemo.app"
+               BlueprintName = "YBTagViewDemo"
+               ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68E977EE1CA9182400E8650F"
-               BuildableName = "YBTagViewTests.xctest"
-               BlueprintName = "YBTagViewTests"
-               ReferencedContainer = "container:YBTagView.xcodeproj">
+               BuildableName = "YBTagViewDemo.xctest"
+               BlueprintName = "YBTagViewDemoTests"
+               ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68E977F91CA9182400E8650F"
-               BuildableName = "YBTagViewUITests.xctest"
-               BlueprintName = "YBTagViewUITests"
-               ReferencedContainer = "container:YBTagView.xcodeproj">
+               BuildableName = "YBTagViewDemo.xctest"
+               BlueprintName = "YBTagViewDemoUITests"
+               ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68E977D51CA9182400E8650F"
-            BuildableName = "YBTagView.app"
-            BlueprintName = "YBTagView"
-            ReferencedContainer = "container:YBTagView.xcodeproj">
+            BuildableName = "YBTagViewDemo.app"
+            BlueprintName = "YBTagViewDemo"
+            ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68E977D51CA9182400E8650F"
-            BuildableName = "YBTagView.app"
-            BlueprintName = "YBTagView"
-            ReferencedContainer = "container:YBTagView.xcodeproj">
+            BuildableName = "YBTagViewDemo.app"
+            BlueprintName = "YBTagViewDemo"
+            ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68E977D51CA9182400E8650F"
-            BuildableName = "YBTagView.app"
-            BlueprintName = "YBTagView"
-            ReferencedContainer = "container:YBTagView.xcodeproj">
+            BuildableName = "YBTagViewDemo.app"
+            BlueprintName = "YBTagViewDemo"
+            ReferencedContainer = "container:YBTagViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		68E977D61CA9182400E8650F /* YBTagView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YBTagView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E977D61CA9182400E8650F /* YBTagViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YBTagViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977DA1CA9182400E8650F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68E977DC1CA9182400E8650F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68E977DD1CA9182400E8650F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,10 +58,10 @@
 		68E977E51CA9182400E8650F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68E977E81CA9182400E8650F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68E977EA1CA9182400E8650F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68E977EF1CA9182400E8650F /* YBTagViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YBTagViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E977EF1CA9182400E8650F /* YBTagViewDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YBTagViewDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977F31CA9182400E8650F /* YBTagViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBTagViewTests.m; sourceTree = "<group>"; };
 		68E977F51CA9182400E8650F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68E977FA1CA9182400E8650F /* YBTagViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YBTagViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68E977FA1CA9182400E8650F /* YBTagViewDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YBTagViewDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977FE1CA9182400E8650F /* YBTagViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBTagViewUITests.m; sourceTree = "<group>"; };
 		68E978001CA9182400E8650F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68E9780C1CA9192C00E8650F /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		68E977CD1CA9182400E8650F = {
 			isa = PBXGroup;
 			children = (
-				68E977D81CA9182400E8650F /* YBTagView */,
+				68E977D81CA9182400E8650F /* YBTagViewDemo */,
 				68E977F21CA9182400E8650F /* YBTagViewTests */,
 				68E977FD1CA9182400E8650F /* YBTagViewUITests */,
 				68E977D71CA9182400E8650F /* Products */,
@@ -126,14 +126,14 @@
 		68E977D71CA9182400E8650F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68E977D61CA9182400E8650F /* YBTagView.app */,
-				68E977EF1CA9182400E8650F /* YBTagViewTests.xctest */,
-				68E977FA1CA9182400E8650F /* YBTagViewUITests.xctest */,
+				68E977D61CA9182400E8650F /* YBTagViewDemo.app */,
+				68E977EF1CA9182400E8650F /* YBTagViewDemo.xctest */,
+				68E977FA1CA9182400E8650F /* YBTagViewDemo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		68E977D81CA9182400E8650F /* YBTagView */ = {
+		68E977D81CA9182400E8650F /* YBTagViewDemo */ = {
 			isa = PBXGroup;
 			children = (
 				68E978131CA91CC500E8650F /* YBTagView */,
@@ -143,6 +143,7 @@
 				68E977E01CA9182400E8650F /* ViewController.m */,
 				68E977D91CA9182400E8650F /* Supporting Files */,
 			);
+			name = YBTagViewDemo;
 			path = YBTagView;
 			sourceTree = "<group>";
 		};
@@ -232,9 +233,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		68E977D51CA9182400E8650F /* YBTagView */ = {
+		68E977D51CA9182400E8650F /* YBTagViewDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68E978031CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagView" */;
+			buildConfigurationList = 68E978031CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemo" */;
 			buildPhases = (
 				68E977D21CA9182400E8650F /* Sources */,
 				68E977D31CA9182400E8650F /* Frameworks */,
@@ -244,14 +245,14 @@
 			);
 			dependencies = (
 			);
-			name = YBTagView;
+			name = YBTagViewDemo;
 			productName = YBTagView;
-			productReference = 68E977D61CA9182400E8650F /* YBTagView.app */;
+			productReference = 68E977D61CA9182400E8650F /* YBTagViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		68E977EE1CA9182400E8650F /* YBTagViewTests */ = {
+		68E977EE1CA9182400E8650F /* YBTagViewDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68E978061CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewTests" */;
+			buildConfigurationList = 68E978061CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemoTests" */;
 			buildPhases = (
 				68E977EB1CA9182400E8650F /* Sources */,
 				68E977EC1CA9182400E8650F /* Frameworks */,
@@ -262,14 +263,14 @@
 			dependencies = (
 				68E977F11CA9182400E8650F /* PBXTargetDependency */,
 			);
-			name = YBTagViewTests;
+			name = YBTagViewDemoTests;
 			productName = YBTagViewTests;
-			productReference = 68E977EF1CA9182400E8650F /* YBTagViewTests.xctest */;
+			productReference = 68E977EF1CA9182400E8650F /* YBTagViewDemo.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		68E977F91CA9182400E8650F /* YBTagViewUITests */ = {
+		68E977F91CA9182400E8650F /* YBTagViewDemoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68E978091CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewUITests" */;
+			buildConfigurationList = 68E978091CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemoUITests" */;
 			buildPhases = (
 				68E977F61CA9182400E8650F /* Sources */,
 				68E977F71CA9182400E8650F /* Frameworks */,
@@ -280,9 +281,9 @@
 			dependencies = (
 				68E977FC1CA9182400E8650F /* PBXTargetDependency */,
 			);
-			name = YBTagViewUITests;
+			name = YBTagViewDemoUITests;
 			productName = YBTagViewUITests;
-			productReference = 68E977FA1CA9182400E8650F /* YBTagViewUITests.xctest */;
+			productReference = 68E977FA1CA9182400E8650F /* YBTagViewDemo.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -307,7 +308,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 68E977D11CA9182400E8650F /* Build configuration list for PBXProject "YBTagView" */;
+			buildConfigurationList = 68E977D11CA9182400E8650F /* Build configuration list for PBXProject "YBTagViewDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -320,9 +321,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				68E977D51CA9182400E8650F /* YBTagView */,
-				68E977EE1CA9182400E8650F /* YBTagViewTests */,
-				68E977F91CA9182400E8650F /* YBTagViewUITests */,
+				68E977D51CA9182400E8650F /* YBTagViewDemo */,
+				68E977EE1CA9182400E8650F /* YBTagViewDemoTests */,
+				68E977F91CA9182400E8650F /* YBTagViewDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -399,12 +400,12 @@
 /* Begin PBXTargetDependency section */
 		68E977F11CA9182400E8650F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 68E977D51CA9182400E8650F /* YBTagView */;
+			target = 68E977D51CA9182400E8650F /* YBTagViewDemo */;
 			targetProxy = 68E977F01CA9182400E8650F /* PBXContainerItemProxy */;
 		};
 		68E977FC1CA9182400E8650F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 68E977D51CA9182400E8650F /* YBTagView */;
+			target = 68E977D51CA9182400E8650F /* YBTagViewDemo */;
 			targetProxy = 68E977FB1CA9182400E8650F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -518,7 +519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YBTagViewDemo;
 			};
 			name = Debug;
 		};
@@ -531,7 +532,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagView;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YBTagViewDemo;
 			};
 			name = Release;
 		};
@@ -542,8 +543,8 @@
 				INFOPLIST_FILE = YBTagViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YBTagView.app/YBTagView";
+				PRODUCT_NAME = YBTagViewDemo;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YBTagViewDemo.app/YBTagViewDemo";
 			};
 			name = Debug;
 		};
@@ -554,8 +555,8 @@
 				INFOPLIST_FILE = YBTagViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YBTagView.app/YBTagView";
+				PRODUCT_NAME = YBTagViewDemo;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YBTagViewDemo.app/YBTagViewDemo";
 			};
 			name = Release;
 		};
@@ -565,7 +566,7 @@
 				INFOPLIST_FILE = YBTagViewUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YBTagViewDemo;
 				TEST_TARGET_NAME = YBTagView;
 				USES_XCTRUNNER = YES;
 			};
@@ -577,7 +578,7 @@
 				INFOPLIST_FILE = YBTagViewUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiapin.www.YBTagViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = YBTagViewDemo;
 				TEST_TARGET_NAME = YBTagView;
 				USES_XCTRUNNER = YES;
 			};
@@ -586,7 +587,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68E977D11CA9182400E8650F /* Build configuration list for PBXProject "YBTagView" */ = {
+		68E977D11CA9182400E8650F /* Build configuration list for PBXProject "YBTagViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68E978011CA9182400E8650F /* Debug */,
@@ -595,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68E978031CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagView" */ = {
+		68E978031CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68E978041CA9182400E8650F /* Debug */,
@@ -604,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68E978061CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewTests" */ = {
+		68E978061CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68E978071CA9182400E8650F /* Debug */,
@@ -613,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68E978091CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewUITests" */ = {
+		68E978091CA9182400E8650F /* Build configuration list for PBXNativeTarget "YBTagViewDemoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68E9780A1CA9182400E8650F /* Debug */,

@@ -14,6 +14,7 @@
 #define CenterViewW 30
 #define CenterViewH 30
 #define space 10
+#define threeTagSpace 5
 #define perLabelH 40
 
 @interface YBTagView : UIView
