@@ -32,6 +32,10 @@
 @property (nonatomic, assign) NSInteger buttonFourTag;
 /**3个tag的时候默认启动顺序*/
 @property (nonatomic, assign) NSInteger buttonThirdTag;
+/**2个tag的时候默认启动顺序*/
+@property (nonatomic, assign) NSInteger buttonTwoTag;
+/**1个tag的时候默认启动顺序*/
+@property (nonatomic, assign) NSInteger buttonOneTag;
 
 
 @end
@@ -51,9 +55,11 @@
         self.backgroundColor = [UIColor lightGrayColor];
         self.isPanGestureOnTagViewed = YES;
         
-        _buttonFourTag = 2;//4个tag的时候默认启动的顺序
         isDefault = YES;
+        _buttonFourTag = 2;//4个tag的时候默认启动的顺序
         _buttonThirdTag = 0;//3个tag的时候默认启动的顺序
+        _buttonTwoTag = 0;//2个tag的时候默认启动的顺序
+        _buttonOneTag = 0;//1个tag的时候默认启动的顺序
     }
     
     return self;
@@ -147,22 +153,445 @@
 {
     if (_tagArray.count == 4)
     {
-        [self addFourTag:YBFourTagStyleTwoLeft];//4个tag的时候默认启动的顺序
+        [self addFourTag:YBFourTagStyleTwoLeft];//4个tag的时候
         
     }else if (_tagArray.count == 3)
     {
-        [self addThirdTag:YBThreeTagStyleZeroLeft];
+        [self addThirdTag:YBThreeTagStyleZeroLeft];//3个tag的时候
         
     }else if (_tagArray.count == 2)
     {
-        
+        [self addTwoTag:YBTwoTagStyleBothRightAskew];//2个tag的时候
         
     }else if (_tagArray.count == 1)
     {
-        
+        [self addOneTag:YBOneTagStyleRightAskew];//1个tag的时候
     }
 }
 
+#pragma mark -- 1个tag
+/**
+ *  添加有1个分支tag的标签
+ */
+- (void)addOneTag:(YBOneTagStyle)tagStyle
+{
+    NSString *string = [_tagWMutArr firstObject];
+    CGFloat tagW = string.floatValue;
+    NSString *tagString = [_tagArray firstObject];
+    
+    if (isDefault)
+    {
+        CGFloat selfW = tagW + CenterViewW+space;
+        CGFloat selfH = TagLabelH;
+        self.width = selfW;
+        self.height = selfH;
+        CGPoint point = CGPointMake(_selfCenter.x+self.width/2 -CenterViewW/2, _selfCenter.y + self.height/2 - CenterViewH/2);
+        self.center = point;
+        _selfCenter = self.center;
+        //检查是否拖动出界
+        [self checkIsOut];
+        
+        YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(0, 0, CenterViewW, CenterViewH)];//self.width - mostW - CenterViewW/2 - 30
+        _tagViewCenterPoint = centerView.center;
+        [centerView.button addTarget:self action:@selector(oneTagChangeState:) forControlEvents:UIControlEventTouchUpInside];
+        [centerView startAnimation];
+        [self addSubview:centerView];
+        _tagCenterView = centerView;
+        
+        YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(self.width- tagW, 0, tagW, TagLabelH) withString:tagString];
+        [self addSubview:label];
+        label.leftPoint = CGPointMake(label.x, TagLabelH);
+        label.rightPoint = CGPointMake(label.x + tagW, TagLabelH);
+        YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+        [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:label.leftPoint endPoint:label.rightPoint withBlock:^(CGFloat time) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [label delay];
+            });
+        }];
+        [self.layer addSublayer:branch];
+        _tagBranchOne = branch;
+        
+        isDefault = NO;
+    }
+    else
+    {
+        switch (tagStyle) {
+            case YBOneTagStyleRightAskew:
+            {
+                
+            }
+                break;
+            case YBOneTagStyleLeftAskew:
+            {
+                [self dismissBranchWhenOneTag];
+                CGPoint point = CGPointMake(_selfCenter.x - self.width+CenterViewW, _selfCenter.y );
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
+                
+                _tagCenterView.frame = CGRectMake(self.width - CenterViewW, 0, CenterViewW, CenterViewH);
+            }
+                break;
+            case YBOneTagStyleLeftVertical:
+            {
+                
+            }
+                break;
+            case YBOneTagStyleRightVertical:
+            {
+                
+            }
+                break;
+        }
+
+    }
+    
+}
+
+- (void)oneTagChangeState:(UIButton *)button
+{
+    _buttonOneTag ++;
+    if (_buttonOneTag == 4) {
+        _buttonOneTag = 0;
+    }
+    
+    switch (_buttonOneTag) {
+        case YBOneTagStyleRightAskew:
+        {
+            [self addOneTag:YBOneTagStyleRightAskew];
+        }
+            break;
+        case YBOneTagStyleLeftAskew:
+        {
+            [self addOneTag:YBOneTagStyleLeftAskew];
+        }
+            break;
+        case YBOneTagStyleLeftVertical:
+        {
+            [self addOneTag:YBOneTagStyleLeftVertical];
+        }
+            break;
+        case YBOneTagStyleRightVertical:
+        {
+            [self addOneTag:YBOneTagStyleRightVertical];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)dismissBranchWhenOneTag
+{
+    [_tagBranchOne removeFromSuperlayer];
+}
+
+
+#pragma mark -- 2个tag
+/**
+ *  添加有2个分支tag的标签
+ */
+- (void)addTwoTag:(YBTwoTagStyle)tagStyle
+{
+    //获得tag上文字的最大宽度
+    CGFloat mostW = 0;
+    for (NSString *string in _tagWMutArr)
+    {
+        CGFloat tagW = [string floatValue];
+        if (tagW - mostW > 0)
+        {
+            mostW = tagW;
+        }
+    }
+    
+    NSString *tagWStr;
+    CGFloat tagW0 = 0;
+    CGFloat tagW1 = 0;
+    for (int i = 0; i < _tagWMutArr.count; i ++) {
+        tagWStr = [_tagWMutArr objectAtIndex:i];
+        if (i == 0) {
+            tagW0 = [tagWStr floatValue]+addLabelW;
+        }else if (i == 1)
+        {
+            tagW1 = [tagWStr floatValue]+addLabelW;
+        }
+    }
+    
+    
+    if (isDefault)
+    {
+        CGFloat selfW = mostW + CenterViewW+space;
+        CGFloat selfH = TagLabelH * 2;
+        self.width = selfW;
+        self.height = selfH;
+        CGPoint point = CGPointMake(_selfCenter.x + self.width/2 - CenterViewW/2, _selfCenter.y - TagLabelH*0.5);
+        self.center = point;
+        _selfCenter = self.center;
+        //检查是否拖动出界
+        [self checkIsOut];
+        
+        YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(0, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH)];//self.width - mostW - CenterViewW/2 - 30
+        _tagViewCenterPoint = centerView.center;
+        [centerView.button addTarget:self action:@selector(twoTagChangeState:) forControlEvents:UIControlEventTouchUpInside];
+        [centerView startAnimation];
+        [self addSubview:centerView];
+        _tagCenterView = centerView;
+        
+        for (int i = 0; i < _tagArray.count; i ++)
+        {
+            CGFloat tagW = [[_tagWMutArr objectAtIndex:i] floatValue];
+            NSString *tagString = [_tagArray objectAtIndex:i];
+            
+            YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(self.width- mostW, TagLabelH*i, tagW, TagLabelH) withString:tagString];
+            [self addSubview:label];
+            
+            label.leftPoint = CGPointMake(label.x, label.y + label.height);
+            label.rightPoint = CGPointMake(label.x + label.width, label.y + label.height);
+            YBBranchLayer *branch = [[YBBranchLayer alloc]init];
+            [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:label.leftPoint endPoint:label.rightPoint withBlock:^(CGFloat time) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [label delay];
+                });
+            }];
+            [self.layer addSublayer:branch];
+            
+            if (i == 0) {
+                _tagOne = label;
+                _tagBranchOne = branch;
+            }else if (i == 1)
+            {
+                _tagTwo = label;
+                _tagBranchTwo = branch;
+            }
+        }
+
+        isDefault = NO;
+    }
+    else
+    {
+        switch (tagStyle)
+        {
+            case YBTwoTagStyleBothRightAskew:
+            {
+                [self dismissBranchWhenTwoTag];
+                CGFloat selfW = mostW + CenterViewW+space;
+                CGFloat selfH = TagLabelH * 2;
+                self.width = selfW;
+                self.height = selfH;
+                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y);
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
+                
+                _tagCenterView.frame = CGRectMake(0, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width - mostW, 0, tagW0- addLabelW, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0- addLabelW, TagLabelH);
+                YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
+                [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:tagOnebranch];
+                
+                _tagTwo.frame = CGRectMake(self.width - mostW, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
+                _tagTwo.rightPoint = CGPointMake(_tagTwo.x+tagW1- addLabelW, TagLabelH*2);
+                YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
+                [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.leftPoint endPoint:_tagTwo.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagTwo delay];
+                    });
+                }];
+                [self.layer addSublayer:tagTwobranch];
+                
+                
+                _tagBranchTwo = tagTwobranch;
+                _tagBranchOne = tagOnebranch;
+            }
+                break;
+            case YBTwoTagStyleBothLeftAskew:
+            {
+                [self dismissBranchWhenTwoTag];
+                
+                CGPoint point = CGPointMake(_selfCenter.x-self.width + CenterViewW, _selfCenter.y);//- TagLabelH*0.5
+                self.center = point;
+                _selfCenter = self.center;
+                [self checkIsOut];
+                
+                _tagCenterView.frame = CGRectMake(self.width - CenterViewW, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW0, 0, tagW0, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
+                YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
+                [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:tagOnebranch];
+                
+                _tagTwo.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW1, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
+                _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1, TagLabelH*2);
+                YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
+                [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagTwo delay];
+                    });
+                }];
+                [self.layer addSublayer:tagTwobranch];
+                
+                _tagBranchTwo = tagTwobranch;
+                _tagBranchOne = tagOnebranch;
+            }
+                break;
+            case YBTwoTagStyleBothLeftVertical:
+            {
+                [self dismissBranchWhenTwoTag];
+                CGFloat selfW = mostW + CenterViewW+space;
+                CGFloat selfH = TagLabelH * 2.5;
+                self.width = selfW;
+                self.height = selfH;
+                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y );
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
+                
+                _tagCenterView.frame = CGRectMake(self.width - CenterViewW, TagLabelH*1.75-CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - tagW0, 0, tagW0, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
+                YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
+                [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:tagOnebranch];
+                
+                _tagTwo.frame = CGRectMake(self.width- CenterViewW/2 - tagW1-10, TagLabelH*1.5, tagW1+10, TagLabelH);
+                _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2.5);
+                _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1+10, TagLabelH*2.5);
+                YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
+                [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagTwo delay];
+                    });
+                }];
+                [self.layer addSublayer:tagTwobranch];
+                
+                _tagBranchTwo = tagTwobranch;
+                _tagBranchOne = tagOnebranch;
+
+            }
+                break;
+            case YBTwoTagStyleBothRightVertical:
+            {
+                [self dismissBranchWhenTwoTag];
+                CGPoint point = CGPointMake(_selfCenter.x + self.width - CenterViewW, _selfCenter.y );
+                self.center = point;
+                _selfCenter = self.center;
+                //检查是否拖动出界
+                [self checkIsOut];
+                
+                _tagCenterView.frame = CGRectMake(0, TagLabelH*1.75-CenterViewH/2, CenterViewW, CenterViewH);
+                _tagViewCenterPoint = _tagCenterView.center;
+                
+                _tagOne.frame = CGRectMake(CenterViewW/2, 0, tagW0, TagLabelH);
+                _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
+                YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
+                [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagOne delay];
+                    });
+                }];
+                [self.layer addSublayer:tagOnebranch];
+                
+                _tagTwo.frame = CGRectMake(CenterViewW/2, TagLabelH*1.5, tagW1+10, TagLabelH);
+                _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2.5);
+                _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1+10, TagLabelH*2.5);
+                YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
+                [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.leftPoint endPoint:_tagTwo.rightPoint withBlock:^(CGFloat time) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [_tagTwo delay];
+                    });
+                }];
+                [self.layer addSublayer:tagTwobranch];
+                
+                _tagBranchTwo = tagTwobranch;
+                _tagBranchOne = tagOnebranch;
+
+            }
+                break;
+                
+            default:
+                break;
+        }
+
+    }
+    
+    
+}
+
+
+/**
+ *  2个tag的时候改变标签状态
+ */
+- (void)twoTagChangeState:(UIButton *)button
+{
+    _buttonTwoTag ++;
+    if (_buttonTwoTag == 4) {
+        _buttonTwoTag = 0;
+    }
+    
+    switch (_buttonTwoTag) {
+        case YBTwoTagStyleBothRightAskew:
+        {
+            [self addTwoTag:YBTwoTagStyleBothRightAskew];
+        }
+            break;
+        case YBTwoTagStyleBothLeftAskew:
+        {
+            [self addTwoTag:YBTwoTagStyleBothLeftAskew];
+        }
+            break;
+        case YBTwoTagStyleBothLeftVertical:
+        {
+            [self addTwoTag:YBTwoTagStyleBothLeftVertical];
+        }
+            break;
+        case YBTwoTagStyleBothRightVertical:
+        {
+            [self addTwoTag:YBTwoTagStyleBothRightVertical];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)dismissBranchWhenTwoTag
+{
+    [_tagBranchOne removeFromSuperlayer];
+    [_tagBranchTwo removeFromSuperlayer];
+}
+
+
+#pragma mark -- 3个tag
 /**
  *  添加有3个分支tag的标签
  */
@@ -203,12 +632,13 @@
         self.height = selfH;
         CGPoint point = CGPointMake(_selfCenter.x + self.width/2 - CenterViewW/2, _selfCenter.y - TagLabelH*0.5);
         self.center = point;
+        _selfCenter = self.center;
         //检查是否拖动出界
         [self checkIsOut];
         //NSLog(@"+++++self.center:%@",NSStringFromCGPoint(self.center));
         //NSLog(@"*****_selfCenter:%@",NSStringFromCGPoint(_selfCenter));
         
-        YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(0, TagLabelH*1.5-3, CenterViewW, CenterViewH)];//self.width - mostW - CenterViewW/2 - 30
+        YBCenterView *centerView = [[YBCenterView alloc]initWithFrame:CGRectMake(0, TagLabelH*1.5, CenterViewW, CenterViewH)];//self.width - mostW - CenterViewW/2 - 30
         _tagViewCenterPoint = centerView.center;
         [centerView.button addTarget:self action:@selector(thirdTagChangeState:) forControlEvents:UIControlEventTouchUpInside];
         [centerView startAnimation];
@@ -217,7 +647,7 @@
         
         for (int i = 0; i < _tagArray.count; i ++)
         {
-            CGFloat tagW = [[_tagWMutArr objectAtIndex:i] floatValue] + 5;
+            CGFloat tagW = [[_tagWMutArr objectAtIndex:i] floatValue] + addLabelW;
             NSString *tagString = [_tagArray objectAtIndex:i];
             
             YBTagLabel *label = [[YBTagLabel alloc]initWithFrame:CGRectMake(CenterViewW/2, TagLabelH*i, tagW, TagLabelH) withString:tagString];
@@ -266,8 +696,10 @@
                 CGFloat selfH = TagLabelH * 2;
                 self.width = selfW;
                 self.height = selfH;
-                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y - TagLabelH*0.5);// + self.width/2 - CenterViewW/2   //- TagLabelH*0.5
+                CGPoint point = CGPointMake(_selfCenter.x-mostW/2, _selfCenter.y);
+//                CGPoint point = CGPointMake(_selfCenter.x, _selfCenter.y - TagLabelH*0.5);// + self.width/2 - CenterViewW/2   //- TagLabelH*0.5
                 self.center = point;
+                _selfCenter = self.center;
                 //检查是否拖动出界
                 [self checkIsOut];
                 
@@ -361,40 +793,40 @@
                 CGFloat selfH = TagLabelH * 3;
                 self.width = selfW;
                 self.height = selfH;
-                CGPoint point = CGPointMake(_selfCenter.x -self.width/2 + CenterViewW/2, _selfCenter.y-TagLabelH*0.5);
+                CGPoint point = CGPointMake(_selfCenter.x -self.width/2 + CenterViewW/2, _selfCenter.y);
                 self.center = point;
                 [self checkIsOut];
                 
                 _tagCenterView.frame = CGRectMake(self.width - CenterViewW, TagLabelH*1.5-CenterViewH/2 + TagLabelH*0.5, CenterViewW, CenterViewH);
                 _tagViewCenterPoint = _tagCenterView.center;
                 
-                _tagOne.frame = CGRectMake(self.width - tagW0 - CenterViewW/2 -5, 0, tagW0+5, TagLabelH);
+                _tagOne.frame = CGRectMake(self.width - tagW0 - CenterViewW/2 -addLabelW, 0, tagW0+addLabelW, TagLabelH);
                 YBBranchLayer *tagOneBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagOneBranch];
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
-                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0+5, TagLabelH);
+                _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0+addLabelW, TagLabelH);
                 [tagOneBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
                     });
                 }];
                 
-                _tagTwo.frame = CGRectMake(self.width - tagW1 - CenterViewW/2-5, TagLabelH, tagW1+5, TagLabelH);
+                _tagTwo.frame = CGRectMake(self.width - tagW1 - CenterViewW/2-addLabelW, TagLabelH, tagW1+addLabelW, TagLabelH);
                 YBBranchLayer *tagTwoBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagTwoBranch];
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
-                _tagTwo.rightPoint = CGPointMake(_tagTwo.x+tagW1+5, TagLabelH*2);
+                _tagTwo.rightPoint = CGPointMake(_tagTwo.x+tagW1+addLabelW, TagLabelH*2);
                 [tagTwoBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
                     });
                 }];
                 
-                _tagThree.frame = CGRectMake(self.width - tagW2 - CenterViewW/2-5, TagLabelH*2, tagW2+5, TagLabelH);
+                _tagThree.frame = CGRectMake(self.width - tagW2 - CenterViewW/2-addLabelW, TagLabelH*2, tagW2+addLabelW, TagLabelH);
                 YBBranchLayer *tagThreeBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagThreeBranch];
                 _tagThree.leftPoint = CGPointMake(_tagThree.x, TagLabelH*3);
-                _tagThree.rightPoint = CGPointMake(_tagThree.x + tagW2+5, TagLabelH*3);
+                _tagThree.rightPoint = CGPointMake(_tagThree.x + tagW2+addLabelW, TagLabelH*3);
                 [tagThreeBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagThree.rightPoint endPoint:_tagThree.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagThree delay];
@@ -469,7 +901,7 @@
 }
 
 
-
+#pragma mark -- 4个tag
 /**
  *  添加有四个tag的标签
  */

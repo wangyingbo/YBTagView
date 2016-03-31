@@ -34,7 +34,7 @@
     YBTagView *tagView = [[YBTagView alloc]initWithPoint:point];
     [self.imageView addSubview:tagView];
     
-    tagView.tagArray = @[@"可儿购",@"面膜",@"￥500.00"];//,@"中国"
+    tagView.tagArray = @[@"可儿购"];//,@"面膜",@"￥500.00",@"中国"
 }
 
 @end

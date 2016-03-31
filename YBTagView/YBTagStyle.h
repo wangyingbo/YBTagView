@@ -24,15 +24,15 @@ typedef NS_ENUM(NSInteger, YBThreeTagStyle) {
 };
 
 typedef NS_ENUM(NSInteger, YBTwoTagStyle) {
-    YBTwoTagStyleBothLeftAskew = 0,
-    YBTwoTagStyleBothRightAskew,
+    YBTwoTagStyleBothRightAskew = 0,
+    YBTwoTagStyleBothLeftAskew,
     YBTwoTagStyleBothLeftVertical,
     YBTwoTagStyleBothRightVertical,
 };
 
 typedef NS_ENUM(NSInteger, YBOneTagStyle) {
-    YBOneTagStyleLeftAskew = 0,
-    YBOneTagStyleRightAskew,
+    YBOneTagStyleRightAskew=0,
+    YBOneTagStyleLeftAskew,
     YBOneTagStyleLeftVertical,
     YBOneTagStyleRightVertical,
 };
