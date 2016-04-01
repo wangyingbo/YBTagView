@@ -234,11 +234,13 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width- tagW, 0, tagW, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x +tagW , TagLabelH);
                 YBBranchLayer *branch = [[YBBranchLayer alloc]init];
                 [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        _tagOne.hidden = NO;
                         [_tagOne delay];
                     });
                 }];
@@ -260,12 +262,14 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width-CenterViewW- space-tagW, 0, tagW, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x+tagW, TagLabelH);
                 
                 YBBranchLayer *branch = [[YBBranchLayer alloc]init];
                 [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        _tagOne.hidden = NO;
                         [_tagOne delay];
                     });
                 }];
@@ -290,9 +294,11 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width-CenterViewW-tagW, 0, tagW, TagLabelH);
+                _tagOne.hidden = YES;
                 YBBranchLayer *branch = [[YBBranchLayer alloc]init];
                 [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        _tagOne.hidden = NO;
                         [_tagOne delay];
                     });
                 }];
@@ -313,12 +319,14 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(CenterViewW, 0, tagW, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW, TagLabelH);
                 YBBranchLayer *branch = [[YBBranchLayer alloc]init];
                 [branch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:branch];
@@ -472,23 +480,27 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width - mostW, 0, tagW0- addLabelW, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0- addLabelW, TagLabelH);
                 YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
                 [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagOnebranch];
                 
                 _tagTwo.frame = CGRectMake(self.width - mostW, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.hidden = YES;
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
                 _tagTwo.rightPoint = CGPointMake(_tagTwo.x+tagW1- addLabelW, TagLabelH*2);
                 YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
                 [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.leftPoint endPoint:_tagTwo.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagTwobranch];
@@ -511,23 +523,27 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW0, 0, tagW0, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
                 YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
                 [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagOnebranch];
                 
                 _tagTwo.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW1, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.hidden = YES;
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
                 _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1, TagLabelH*2);
                 YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
                 [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagTwobranch];
@@ -553,23 +569,27 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - tagW0, 0, tagW0, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
                 YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
                 [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagOnebranch];
                 
                 _tagTwo.frame = CGRectMake(self.width- CenterViewW/2 - tagW1-10, TagLabelH*1.5, tagW1+10, TagLabelH);
+                _tagTwo.hidden = YES;
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2.5);
                 _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1+10, TagLabelH*2.5);
                 YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
                 [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagTwobranch];
@@ -592,23 +612,27 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(CenterViewW/2, 0, tagW0, TagLabelH);
+                _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
                 YBBranchLayer *tagOnebranch = [[YBBranchLayer alloc]init];
                 [tagOnebranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.leftPoint endPoint:_tagOne.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagOnebranch];
                 
                 _tagTwo.frame = CGRectMake(CenterViewW/2, TagLabelH*1.5, tagW1+10, TagLabelH);
+                _tagTwo.hidden = YES;
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2.5);
                 _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1+10, TagLabelH*2.5);
                 YBBranchLayer *tagTwobranch = [[YBBranchLayer alloc]init];
                 [tagTwobranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.leftPoint endPoint:_tagTwo.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 [self.layer addSublayer:tagTwobranch];
@@ -627,7 +651,6 @@
     
     
 }
-
 
 /**
  *  2个tag的时候改变标签状态
@@ -789,6 +812,7 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width/2 - threeTagSpace - tagW0 - CenterViewW/2, TagLabelH, tagW0, TagLabelH);
+                _tagOne.hidden = YES;
                 YBBranchLayer *tagOneBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagOneBranch];
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH*2);
@@ -796,9 +820,11 @@
                 [tagOneBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 _tagTwo.frame = CGRectMake(self.width - mostW, 0, tagW1, TagLabelH);
+                _tagTwo.hidden = YES;
                 YBBranchLayer *tagTwoBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagTwoBranch];
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH);
@@ -806,16 +832,18 @@
                 [tagTwoBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.leftPoint endPoint:_tagTwo.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 _tagThree.frame = CGRectMake(self.width - mostW, TagLabelH, tagW2, TagLabelH);
+                _tagThree.hidden = YES;
                 YBBranchLayer *tagThreeBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagThreeBranch];
                 _tagThree.leftPoint = CGPointMake(_tagThree.x, TagLabelH*2);
                 _tagThree.rightPoint = CGPointMake(_tagThree.x + tagW2, TagLabelH*2);
                 [tagThreeBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagThree.leftPoint endPoint:_tagThree.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [_tagThree delay];
+                        [_tagThree delay];_tagThree.hidden = NO;
                     });
                 }];
                 
@@ -830,6 +858,7 @@
 //                NSLog(@"2个在左边,1个在右边");
                 [self dismissBranchWhenThreeTag];
                 _tagOne.frame = CGRectMake(self.width/2 - threeTagSpace - tagW0 - CenterViewW/2, 0, tagW0, TagLabelH);
+                _tagOne.hidden = YES;
                 YBBranchLayer *tagOneBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagOneBranch];
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
@@ -837,10 +866,12 @@
                 [tagOneBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 
                 _tagTwo.frame = CGRectMake(self.width/2 - threeTagSpace - tagW1 - CenterViewW/2, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.hidden = YES;
                 YBBranchLayer *tagTwoBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagTwoBranch];
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
@@ -848,10 +879,12 @@
                 [tagTwoBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 
                 _tagThree.frame = CGRectMake(self.width - mostW, TagLabelH, tagW2, TagLabelH);
+                _tagThree.hidden = YES;
                 YBBranchLayer *tagThreeBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagThreeBranch];
                 _tagThree.leftPoint = CGPointMake(_tagThree.x, TagLabelH*2);
@@ -859,6 +892,7 @@
                 [tagThreeBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagThree.leftPoint endPoint:_tagThree.rightPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagThree delay];
+                        _tagThree.hidden = NO;
                     });
                 }];
                 
@@ -883,6 +917,7 @@
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width - tagW0 - CenterViewW/2 -addLabelW, 0, tagW0+addLabelW, TagLabelH);
+                _tagOne.hidden = YES;
                 YBBranchLayer *tagOneBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagOneBranch];
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
@@ -890,10 +925,12 @@
                 [tagOneBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagOne.rightPoint endPoint:_tagOne.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagOne delay];
+                        _tagOne.hidden = NO;
                     });
                 }];
                 
                 _tagTwo.frame = CGRectMake(self.width - tagW1 - CenterViewW/2-addLabelW, TagLabelH, tagW1+addLabelW, TagLabelH);
+                _tagTwo.hidden = YES;
                 YBBranchLayer *tagTwoBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagTwoBranch];
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
@@ -901,10 +938,12 @@
                 [tagTwoBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagTwo.rightPoint endPoint:_tagTwo.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagTwo delay];
+                        _tagTwo.hidden = NO;
                     });
                 }];
                 
                 _tagThree.frame = CGRectMake(self.width - tagW2 - CenterViewW/2-addLabelW, TagLabelH*2, tagW2+addLabelW, TagLabelH);
+                _tagThree.hidden = YES;
                 YBBranchLayer *tagThreeBranch = [[YBBranchLayer alloc]init];
                 [self.layer addSublayer:tagThreeBranch];
                 _tagThree.leftPoint = CGPointMake(_tagThree.x, TagLabelH*3);
@@ -912,6 +951,7 @@
                 [tagThreeBranch commitPathWithStartPoint:_tagViewCenterPoint midPoint:_tagThree.rightPoint endPoint:_tagThree.leftPoint withBlock:^(CGFloat time) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [_tagThree delay];
+                        _tagThree.hidden = NO;
                     });
                 }];
                 
