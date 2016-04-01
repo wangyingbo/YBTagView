@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-#define TagViewW  150
-#define TagViewH  100
-#define TagLabelH 30
-#define CenterViewW 30
-#define CenterViewH 30
-#define space 10
-#define threeTagSpace 5
-#define perLabelH 40
-#define addLabelW 5
+#define TagViewW  150 //标签底部view的宽
+#define TagViewH  100 //标签底部view的高
+#define TagLabelH 30 // 标签上文字label的高
+#define CenterViewW 30 //中心点按钮的宽
+#define CenterViewH 30 //中心点按钮的高
+#define space 10  //从中心点到label之间的间隔距离
+#define threeTagSpace 5 // 同上
+#define perLabelH 40 //文字label的高
+#define addLabelW 5 //
 
 @interface YBTagView : UIView
 
