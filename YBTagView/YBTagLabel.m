@@ -15,16 +15,42 @@
 - (instancetype)initWithFrame:(CGRect)frame withString:(NSString *)string
 {
     if (self = [super initWithFrame:frame]) {
-
+        
         //用Attribute添加带下划线的label
 //        [self addAttributeLabelWithStr:string];
         
         //直接在label上加线
         [self addLineLabelWithStr:string withFrame:frame];
+        
+        //添加点击手势
+        YBTagGestureRecognizer *gesture = [[YBTagGestureRecognizer alloc]initWithTarget:self action:@selector(tagGesture:)];
+        gesture.gestureString = string;
+        self.userInteractionEnabled = YES;
+        [self addGestureRecognizer:gesture];
     }
     
     return self;
 }
+
+
+
+- (void)tagGesture:(YBTagGestureRecognizer *)gesture
+{
+    NSLog(@"........手势方法");
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagLabelDelegateMethod:)]) {
+        
+        [self.delegate tagLabelDelegateMethod:gesture.gestureString];
+    }
+    
+    //TODO: 通知第一步
+//    NSDictionary *text =[[NSDictionary alloc] initWithObjectsAndKeys:gesture.gestureString,@"gestureString",nil];
+//    NSNotification *notification =[NSNotification notificationWithName:@"noticeMethod" object:self userInfo:text];
+    //TODO: 通知第二步
+//    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+
 
 
 /**

@@ -26,15 +26,18 @@
 }
 
 
-- (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
-    
+- (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer
+{
     CGPoint point = [tapGestureRecognizer locationInView:tapGestureRecognizer.view];
     
 //    NSLog(@"开始位置：%@",NSStringFromCGPoint(point));
     YBTagView *tagView = [[YBTagView alloc]initWithPoint:point];
+    tagView.block = ^(NSString *gestureString){
+        NSLog(@"......%@",gestureString);
+    };
     [self.imageView addSubview:tagView];
-    
     tagView.tagArray = @[@"可儿购",@"面膜",@"面膜",@"中国"];//,@"面膜",@"￥500.00",@"中国"
+    
 }
 
 @end

@@ -24,6 +24,6 @@
 #import "YBCenterView.h"
 #import "YBFocusLayer.h"
 #import "YBBranchLayer.h"
-
+#import "YBTagGestureRecognizer.h"
 
 #endif /* YBTagHeader_h */

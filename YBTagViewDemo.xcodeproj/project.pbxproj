@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		685C44671CB35FA700B8CAD5 /* YBTagGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 685C44661CB35FA700B8CAD5 /* YBTagGestureRecognizer.m */; };
 		68E977DB1CA9182400E8650F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977DA1CA9182400E8650F /* main.m */; };
 		68E977DE1CA9182400E8650F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977DD1CA9182400E8650F /* AppDelegate.m */; };
 		68E977E11CA9182400E8650F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977E01CA9182400E8650F /* ViewController.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		685C44651CB35FA700B8CAD5 /* YBTagGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBTagGestureRecognizer.h; sourceTree = "<group>"; };
+		685C44661CB35FA700B8CAD5 /* YBTagGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBTagGestureRecognizer.m; sourceTree = "<group>"; };
 		68E977D61CA9182400E8650F /* YBTagViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YBTagViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977DA1CA9182400E8650F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68E977DC1CA9182400E8650F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				68E978321CAA88AB00E8650F /* YBBranchLayer.m */,
 				68E9780E1CA9196300E8650F /* UIView+Extension.h */,
 				68E9780F1CA9196300E8650F /* UIView+Extension.m */,
+				685C44651CB35FA700B8CAD5 /* YBTagGestureRecognizer.h */,
+				685C44661CB35FA700B8CAD5 /* YBTagGestureRecognizer.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				68E977E11CA9182400E8650F /* ViewController.m in Sources */,
 				68E978211CA92D1D00E8650F /* YBTagLabel.m in Sources */,
 				68E978161CA91DBC00E8650F /* YBCenterView.m in Sources */,
+				685C44671CB35FA700B8CAD5 /* YBTagGestureRecognizer.m in Sources */,
 				68E977DE1CA9182400E8650F /* AppDelegate.m in Sources */,
 				68E978101CA9196300E8650F /* UIView+Extension.m in Sources */,
 				68E978331CAA88AB00E8650F /* YBBranchLayer.m in Sources */,

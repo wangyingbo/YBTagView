@@ -10,7 +10,7 @@
 
 
 
-@interface YBTagView ()
+@interface YBTagView ()<tagLabelDelegate>
 {
     BOOL isDefault;
 }
@@ -47,6 +47,9 @@
     self = [super init];
     if (self)
     {
+        //TODO: 通知第三步
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noticeMethod:) name:@"noticeMethod" object:nil];
+        
         self.width = TagViewW;
         self.height = TagViewH;
         self.center = point;
@@ -66,10 +69,22 @@
 }
 
 
+/**
+ *  通知方法
+ */
+//- (void)noticeMethod:(NSNotification *)text
+//{
+//    NSLog(@"........通知方法");
+//    NSString *string = [text.userInfo objectForKey:@"gestureString"];
+//    if (self.block) {
+//        self.block(string);
+//    }
+//    
+//}
+
+
 - (void)setTagArray:(NSArray *)tagArray
 {
-    
-    
     //获取tag标签字符串的长度
     _tagArray = tagArray;
     NSMutableArray *mutArr = [NSMutableArray array];
@@ -167,7 +182,23 @@
     {
         [self addOneTag:YBOneTagStyleRightAskew];//1个tag的时候
     }
+    
+    
+    self.tagOne.delegate = self;
+    self.tagTwo.delegate = self;
+    self.tagThree.delegate = self;
+    self.tagFour.delegate = self;
 }
+
+
+#pragma mark -- tagLabelDelegate
+- (void)tagLabelDelegateMethod:(NSString *)string
+{
+    if (self.block) {
+        self.block(string);
+    }
+}
+
 
 #pragma mark -- 1个tag
 /**

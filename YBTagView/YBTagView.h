@@ -18,6 +18,8 @@
 #define perLabelH 40 //文字label的高
 #define addLabelW 5 //
 
+typedef void(^myBlock)(NSString *);
+
 @interface YBTagView : UIView
 
 /**按住拖动手势*/
@@ -30,6 +32,9 @@
 @property (nonatomic, assign) CGPoint tagViewCenterPoint;
 
 @property (nonatomic, assign) CGPoint selfCenter;
+
+@property (nonatomic, copy) myBlock block;
+
 /**
  *  根据点来确定加上的标签页
  */
