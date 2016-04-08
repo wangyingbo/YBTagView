@@ -16,7 +16,6 @@
 		68E977E91CA9182400E8650F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E977E71CA9182400E8650F /* LaunchScreen.storyboard */; };
 		68E977F41CA9182400E8650F /* YBTagViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977F31CA9182400E8650F /* YBTagViewTests.m */; };
 		68E977FF1CA9182400E8650F /* YBTagViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977FE1CA9182400E8650F /* YBTagViewUITests.m */; };
-		68E9780D1CA9192C00E8650F /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68E9780C1CA9192C00E8650F /* test.jpg */; };
 		68E978101CA9196300E8650F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E9780F1CA9196300E8650F /* UIView+Extension.m */; };
 		68E978161CA91DBC00E8650F /* YBCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E978151CA91DBC00E8650F /* YBCenterView.m */; };
 		68E9781B1CA920ED00E8650F /* YBTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E9781A1CA920ED00E8650F /* YBTagView.m */; };
@@ -24,8 +23,6 @@
 		68E978211CA92D1D00E8650F /* YBTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E978201CA92D1D00E8650F /* YBTagLabel.m */; };
 		68E978251CAA2EE200E8650F /* YBTagStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E978241CAA2EE200E8650F /* YBTagStyle.m */; };
 		68E978291CAA678D00E8650F /* YBFocusLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E978281CAA678D00E8650F /* YBFocusLayer.m */; };
-		68E9782C1CAA6B8C00E8650F /* tag-center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E9782A1CAA6B8C00E8650F /* tag-center@2x.png */; };
-		68E9782D1CAA6B8C00E8650F /* tag-center@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E9782B1CAA6B8C00E8650F /* tag-center@3x.png */; };
 		68E9782F1CAA6ECF00E8650F /* yuandian.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E9782E1CAA6ECF00E8650F /* yuandian.png */; };
 		68E978331CAA88AB00E8650F /* YBBranchLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E978321CAA88AB00E8650F /* YBBranchLayer.m */; };
 		68E978351CABC83300E8650F /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68E978341CABC83300E8650F /* test1.png */; };
@@ -67,7 +64,6 @@
 		68E977FA1CA9182400E8650F /* YBTagViewDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YBTagViewDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977FE1CA9182400E8650F /* YBTagViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YBTagViewUITests.m; sourceTree = "<group>"; };
 		68E978001CA9182400E8650F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68E9780C1CA9192C00E8650F /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		68E9780E1CA9196300E8650F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		68E9780F1CA9196300E8650F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		68E978111CA919B800E8650F /* YBTagView.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YBTagView.pch; sourceTree = "<group>"; };
@@ -83,8 +79,6 @@
 		68E978241CAA2EE200E8650F /* YBTagStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBTagStyle.m; sourceTree = "<group>"; };
 		68E978271CAA678D00E8650F /* YBFocusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBFocusLayer.h; sourceTree = "<group>"; };
 		68E978281CAA678D00E8650F /* YBFocusLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBFocusLayer.m; sourceTree = "<group>"; };
-		68E9782A1CAA6B8C00E8650F /* tag-center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag-center@2x.png"; sourceTree = "<group>"; };
-		68E9782B1CAA6B8C00E8650F /* tag-center@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag-center@3x.png"; sourceTree = "<group>"; };
 		68E9782E1CAA6ECF00E8650F /* yuandian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuandian.png; sourceTree = "<group>"; };
 		68E978311CAA88AB00E8650F /* YBBranchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBBranchLayer.h; sourceTree = "<group>"; };
 		68E978321CAA88AB00E8650F /* YBBranchLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBBranchLayer.m; sourceTree = "<group>"; };
@@ -227,9 +221,6 @@
 			children = (
 				68E9781C1CA921CF00E8650F /* test2.jpg */,
 				68E978341CABC83300E8650F /* test1.png */,
-				68E9780C1CA9192C00E8650F /* test.jpg */,
-				68E9782A1CAA6B8C00E8650F /* tag-center@2x.png */,
-				68E9782B1CAA6B8C00E8650F /* tag-center@3x.png */,
 				68E9782E1CAA6ECF00E8650F /* yuandian.png */,
 			);
 			name = Images;
@@ -339,13 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E9782F1CAA6ECF00E8650F /* yuandian.png in Resources */,
-				68E9782D1CAA6B8C00E8650F /* tag-center@3x.png in Resources */,
-				68E9782C1CAA6B8C00E8650F /* tag-center@2x.png in Resources */,
 				68E977E91CA9182400E8650F /* LaunchScreen.storyboard in Resources */,
 				68E977E61CA9182400E8650F /* Assets.xcassets in Resources */,
 				68E9781D1CA921CF00E8650F /* test2.jpg in Resources */,
 				68E977E41CA9182400E8650F /* Main.storyboard in Resources */,
-				68E9780D1CA9192C00E8650F /* test.jpg in Resources */,
 				68E978351CABC83300E8650F /* test1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
