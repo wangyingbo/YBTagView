@@ -48,7 +48,7 @@
     self.path = path.CGPath;
     
     //添加动画
-    CGFloat time = 1.5;//动画时间
+    CGFloat time = 1.0;//动画时间
     _animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     _animation.delegate = self;
     _animation.fromValue = @(0);

@@ -39,7 +39,7 @@
         SHOW_ALTER(gestureString);
     };
     [self.imageView addSubview:tagView];
-    tagView.tagArray = @[@"可儿购",@"面膜",@"500.00",@"中国"];//@"可儿购",@"面膜",@"￥500.00",@"中国"
+    tagView.tagArray = @[@"可儿购",@"面膜",@"￥500.00",@"中国"];//@"可儿购",@"面膜",@"￥500.00",@"中国"
     
 }
 

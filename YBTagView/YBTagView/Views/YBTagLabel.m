@@ -76,7 +76,7 @@
     self.textAlignment = NSTextAlignmentCenter;
     self.textColor = [UIColor whiteColor];
     self.font = [UIFont systemFontOfSize:12.0];
-    
+    self.alpha = 0;
     _selfW = frame.size.width;
     _selfStr = string;
 
@@ -86,9 +86,9 @@
 
 - (void)delay
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        
+    [UIView animateWithDuration:1.0 animations:^{
         self.text = _selfStr;
+        self.alpha = 1.0;
     } completion:^(BOOL finished) {
         
     }];

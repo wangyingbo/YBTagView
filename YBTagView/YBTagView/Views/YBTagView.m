@@ -814,6 +814,9 @@
             }
         }
     
+        self.tagOne.delegate = self;
+        self.tagTwo.delegate = self;
+        self.tagThree.delegate = self;
         isDefault = NO;
     }else
     {
@@ -998,7 +1001,7 @@
         }
  
     }
-    
+
 }
 
 /**
@@ -1445,7 +1448,10 @@
             break;
     }
 
-
+    self.tagOne.delegate = self;
+    self.tagTwo.delegate = self;
+    self.tagThree.delegate = self;
+    self.tagFour.delegate = self;
 }
 
 
@@ -1495,6 +1501,8 @@
     [_tagBranchFour removeFromSuperlayer];
     
     [_tagCenterView removeFromSuperview];
+    
+    
 }
 
 
