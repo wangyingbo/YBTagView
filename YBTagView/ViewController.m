@@ -25,7 +25,9 @@
     [self.imageView addGestureRecognizer:tapGestureRecognizer];
 }
 
-
+/**
+ *  根据触摸位置，返回一个点，根据点来确定标签位置
+ */
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     CGPoint point = [tapGestureRecognizer locationInView:tapGestureRecognizer.view];
@@ -34,9 +36,10 @@
     YBTagView *tagView = [[YBTagView alloc]initWithPoint:point];
     tagView.block = ^(NSString *gestureString){
         NSLog(@"......%@",gestureString);
+        SHOW_ALTER(gestureString);
     };
     [self.imageView addSubview:tagView];
-    tagView.tagArray = @[@"可儿购",@"面膜",@"面膜",@"中国"];//,@"面膜",@"￥500.00",@"中国"
+    tagView.tagArray = @[@"可儿购",@"面膜",@"500.00",@"中国"];//@"可儿购",@"面膜",@"￥500.00",@"中国"
     
 }
 

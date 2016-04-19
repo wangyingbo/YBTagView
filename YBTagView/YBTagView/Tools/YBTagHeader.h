@@ -17,6 +17,9 @@
 #define VIEW_W  FULL_WIDTH/375
 #define VIEW_H  FULL_HEIGHT/667
 
+//警告
+#define   SHOW_ALTER(str)  [[[UIAlertView alloc]initWithTitle:@"点击了" message:str delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] show]
+
 #import "UIView+Extension.h"
 #import "YBTagStyle.h"
 #import "YBTagView.h"
