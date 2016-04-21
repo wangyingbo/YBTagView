@@ -35,9 +35,29 @@ typedef void(^myBlock)(NSString *);
 
 @property (nonatomic, copy) myBlock block;
 
+
+
 /**
  *  根据点来确定加上的标签页
+ *
+ *  @param point 触摸屏幕时点中的点
+ *
+ *  @return
  */
 - (instancetype)initWithPoint:(CGPoint)point;
+
+
+
+/**
+ *  在图片上添加标签,添加完不可修改
+ *
+ *  @param point    触摸屏幕时点中的点
+ *  @param array    有标签名字的数组
+ *  @param tagStyle 标签的风格，传入的是枚举值
+ *
+ *  @return
+ */
+- (instancetype)initWithPoint:(CGPoint)point array:(NSArray *)array tagStyle:(NSInteger)tagStyle;
+
 
 @end

@@ -59,11 +59,65 @@
         self.isPanGestureOnTagViewed = YES;
         
         isDefault = YES;
-        _buttonFourTag = 2;//4个tag的时候默认启动的顺序
+        _buttonFourTag = 3;//4个tag的时候默认启动的顺序
         _buttonThirdTag = 0;//3个tag的时候默认启动的顺序
         _buttonTwoTag = 0;//2个tag的时候默认启动的顺序
         _buttonOneTag = 0;//1个tag的时候默认启动的顺序
     }
+    
+    return self;
+}
+
+
+/**
+ *  在图片上添加标签,添加完不可修改
+ *
+ *  @param point    触摸屏幕时点中的点
+ *  @param array    有标签名字的数组
+ *  @param tagStyle 标签的风格，传入的是枚举值
+ *
+ *  @return
+ */
+- (instancetype)initWithPoint:(CGPoint)point array:(NSArray *)array tagStyle:(NSInteger)tagStyle
+{
+    self = [super init];
+    if (self)
+    {
+        //设置frame
+        self.width = TagViewW;
+        self.height = TagViewH;
+        self.center = point;
+        _selfCenter = point;
+        self.isPanGestureOnTagViewed = YES;
+        
+        //添加tag的时候tag的风格
+        if (array.count != 0)
+        {
+            switch (array.count)
+            {
+                case 1:
+                    _buttonOneTag = tagStyle;//1个tag的时候默认启动的顺序
+                    break;
+                case 2:
+                    _buttonTwoTag = tagStyle;//2个tag的时候默认启动的顺序
+                    break;
+                case 3:
+                    _buttonThirdTag = tagStyle;//3个tag的时候默认启动的顺序
+                    break;
+                case 4:
+                    _buttonFourTag = tagStyle;//4个tag的时候默认启动的顺序
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        //默认
+        isDefault = YES;
+        //设置数组
+        [self setTagArray:array];
+    }
+    
     
     return self;
 }
@@ -166,23 +220,47 @@
  */
 - (void)addTag
 {
-    if (_tagArray.count == 4)
+    if (_tagArray.count == 4)//4个tag的时候
     {
-        [self addFourTag:YBFourTagStyleTwoLeft];//4个tag的时候
+        [self addFourTag:_buttonFourTag];
         
-    }else if (_tagArray.count == 3)
+    }else if (_tagArray.count == 3)//3个tag的时候
     {
-        [self addThirdTag:YBThreeTagStyleZeroLeft];//3个tag的时候
-        
-    }else if (_tagArray.count == 2)
+        if (_buttonThirdTag == 0)
+        {
+            [self addThirdTag:YBThreeTagStyleZeroLeft];
+        }else
+        {
+            for (int i = 0; i < _buttonThirdTag+1; i ++)
+            {
+                [self addThirdTag:i];
+            }
+        }
+    }else if (_tagArray.count == 2)//2个tag的时候
     {
-        [self addTwoTag:YBTwoTagStyleBothRightAskew];//2个tag的时候
-        
-    }else if (_tagArray.count == 1)
+        if (_buttonTwoTag == 0)
+        {
+            [self addTwoTag:YBTwoTagStyleBothRightAskew];
+        }else
+        {
+            for (int i = 0; i < _buttonTwoTag+1; i ++)
+            {
+                [self addTwoTag:i];
+            }
+        }
+    }else if (_tagArray.count == 1)//1个tag的时候
     {
-        [self addOneTag:YBOneTagStyleRightAskew];//1个tag的时候
+        if (_buttonOneTag == 0)
+        {
+            [self addOneTag:YBOneTagStyleRightAskew];
+        }else
+        {
+            for (int i = 0; i < _buttonOneTag+1; i ++)
+            {
+                [self addOneTag:i];
+            }
+        }
     }
-    
     
     self.tagOne.delegate = self;
     self.tagTwo.delegate = self;
