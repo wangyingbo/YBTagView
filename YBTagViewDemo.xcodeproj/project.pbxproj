@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6896495D1CC5C81C00CDA924 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 689649481CC5C81C00CDA924 /* test1.png */; };
-		6896495E1CC5C81C00CDA924 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 689649491CC5C81C00CDA924 /* test2.jpg */; };
-		6896495F1CC5C81C00CDA924 /* yuandian.png in Resources */ = {isa = PBXBuildFile; fileRef = 6896494A1CC5C81C00CDA924 /* yuandian.png */; };
 		689649601CC5C81C00CDA924 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896494C1CC5C81C00CDA924 /* UIView+Extension.m */; };
 		689649611CC5C81C00CDA924 /* YBBranchLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896494E1CC5C81C00CDA924 /* YBBranchLayer.m */; };
 		689649621CC5C81C00CDA924 /* YBFocusLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 689649501CC5C81C00CDA924 /* YBFocusLayer.m */; };
@@ -18,6 +15,9 @@
 		689649651CC5C81C00CDA924 /* YBCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 689649581CC5C81C00CDA924 /* YBCenterView.m */; };
 		689649661CC5C81C00CDA924 /* YBTagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896495A1CC5C81C00CDA924 /* YBTagLabel.m */; };
 		689649671CC5C81C00CDA924 /* YBTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896495C1CC5C81C00CDA924 /* YBTagView.m */; };
+		68964A691CD0B68100CDA924 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 68964A661CD0B68100CDA924 /* test1.png */; };
+		68964A6A1CD0B68100CDA924 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68964A671CD0B68100CDA924 /* test2.jpg */; };
+		68964A6B1CD0B68100CDA924 /* yuandian.png in Resources */ = {isa = PBXBuildFile; fileRef = 68964A681CD0B68100CDA924 /* yuandian.png */; };
 		68E977DB1CA9182400E8650F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977DA1CA9182400E8650F /* main.m */; };
 		68E977DE1CA9182400E8650F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977DD1CA9182400E8650F /* AppDelegate.m */; };
 		68E977E11CA9182400E8650F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E977E01CA9182400E8650F /* ViewController.m */; };
@@ -46,9 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		689649481CC5C81C00CDA924 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
-		689649491CC5C81C00CDA924 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
-		6896494A1CC5C81C00CDA924 /* yuandian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuandian.png; sourceTree = "<group>"; };
 		6896494B1CC5C81C00CDA924 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		6896494C1CC5C81C00CDA924 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		6896494D1CC5C81C00CDA924 /* YBBranchLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBBranchLayer.h; sourceTree = "<group>"; };
@@ -66,6 +63,9 @@
 		6896495A1CC5C81C00CDA924 /* YBTagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBTagLabel.m; sourceTree = "<group>"; };
 		6896495B1CC5C81C00CDA924 /* YBTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBTagView.h; sourceTree = "<group>"; };
 		6896495C1CC5C81C00CDA924 /* YBTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBTagView.m; sourceTree = "<group>"; };
+		68964A661CD0B68100CDA924 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
+		68964A671CD0B68100CDA924 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
+		68964A681CD0B68100CDA924 /* yuandian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yuandian.png; sourceTree = "<group>"; };
 		68E977D61CA9182400E8650F /* YBTagViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YBTagViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E977DA1CA9182400E8650F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		68E977DC1CA9182400E8650F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		689649461CC5C81C00CDA924 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				689649471CC5C81C00CDA924 /* Images */,
+				689649531CC5C81C00CDA924 /* YBTagHeader.h */,
 				6896494B1CC5C81C00CDA924 /* UIView+Extension.h */,
 				6896494C1CC5C81C00CDA924 /* UIView+Extension.m */,
 				6896494D1CC5C81C00CDA924 /* YBBranchLayer.h */,
@@ -131,21 +131,10 @@
 				689649501CC5C81C00CDA924 /* YBFocusLayer.m */,
 				689649511CC5C81C00CDA924 /* YBTagGestureRecognizer.h */,
 				689649521CC5C81C00CDA924 /* YBTagGestureRecognizer.m */,
-				689649531CC5C81C00CDA924 /* YBTagHeader.h */,
 				689649541CC5C81C00CDA924 /* YBTagStyle.h */,
 				689649551CC5C81C00CDA924 /* YBTagStyle.m */,
 			);
 			path = Tools;
-			sourceTree = "<group>";
-		};
-		689649471CC5C81C00CDA924 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				689649481CC5C81C00CDA924 /* test1.png */,
-				689649491CC5C81C00CDA924 /* test2.jpg */,
-				6896494A1CC5C81C00CDA924 /* yuandian.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		689649561CC5C81C00CDA924 /* Views */ = {
@@ -159,6 +148,16 @@
 				6896495C1CC5C81C00CDA924 /* YBTagView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		68964A651CD0B68100CDA924 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				68964A661CD0B68100CDA924 /* test1.png */,
+				68964A671CD0B68100CDA924 /* test2.jpg */,
+				68964A681CD0B68100CDA924 /* yuandian.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		68E977CD1CA9182400E8650F = {
@@ -189,6 +188,7 @@
 				68E977DD1CA9182400E8650F /* AppDelegate.m */,
 				68E977DF1CA9182400E8650F /* ViewController.h */,
 				68E977E01CA9182400E8650F /* ViewController.m */,
+				68964A651CD0B68100CDA924 /* Images */,
 				68E977D91CA9182400E8650F /* Supporting Files */,
 			);
 			name = YBTagViewDemo;
@@ -330,9 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E977E91CA9182400E8650F /* LaunchScreen.storyboard in Resources */,
-				6896495E1CC5C81C00CDA924 /* test2.jpg in Resources */,
-				6896495F1CC5C81C00CDA924 /* yuandian.png in Resources */,
-				6896495D1CC5C81C00CDA924 /* test1.png in Resources */,
+				68964A6A1CD0B68100CDA924 /* test2.jpg in Resources */,
+				68964A6B1CD0B68100CDA924 /* yuandian.png in Resources */,
+				68964A691CD0B68100CDA924 /* test1.png in Resources */,
 				68E977E61CA9182400E8650F /* Assets.xcassets in Resources */,
 				68E977E41CA9182400E8650F /* Main.storyboard in Resources */,
 			);
