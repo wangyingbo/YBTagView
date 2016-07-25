@@ -262,6 +262,28 @@
         }
     }
     
+    
+    
+//    if (_tagArray.count == 4)
+//    {
+//        [self addFourTag:YBFourTagStyleTwoLeft];//4个tag的时候
+//        
+//    }else if (_tagArray.count == 3)
+//    {
+//        [self addThirdTag:YBThreeTagStyleZeroLeft];//3个tag的时候
+//        
+//    }else if (_tagArray.count == 2)
+//    {
+//        [self addTwoTag:YBTwoTagStyleBothRightAskew];//2个tag的时候
+//        
+//    }else if (_tagArray.count == 1)
+//    {
+//        [self addOneTag:YBOneTagStyleRightAskew];//1个tag的时候
+//    }
+    
+
+    [self checkIsOut];
+    
     self.tagOne.delegate = self;
     self.tagTwo.delegate = self;
     self.tagThree.delegate = self;
@@ -628,7 +650,7 @@
                 _selfCenter = self.center;
                 [self checkIsOut];
                 
-                _tagCenterView.frame = CGRectMake(self.width - CenterViewW, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH);
+                _tagCenterView.frame = CGRectMake(self.width - CenterViewW/2, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH);
                 _tagViewCenterPoint = _tagCenterView.center;
                 
                 _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW0, 0, tagW0, TagLabelH);
