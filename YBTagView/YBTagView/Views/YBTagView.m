@@ -653,7 +653,7 @@
                 _tagCenterView.frame = CGRectMake(self.width - CenterViewW/2, TagLabelH*1.5-CenterViewH/2, CenterViewW, CenterViewH);
                 _tagViewCenterPoint = _tagCenterView.center;
                 
-                _tagOne.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW0, 0, tagW0, TagLabelH);
+                _tagOne.frame = CGRectMake(self.width- CenterViewW - space - tagW0, 0, tagW0, TagLabelH);
                 _tagOne.hidden = YES;
                 _tagOne.leftPoint = CGPointMake(_tagOne.x, TagLabelH);
                 _tagOne.rightPoint = CGPointMake(_tagOne.x + tagW0, TagLabelH);
@@ -666,7 +666,7 @@
                 }];
                 [self.layer addSublayer:tagOnebranch];
                 
-                _tagTwo.frame = CGRectMake(self.width- CenterViewW/2 - space - tagW1, TagLabelH, tagW1, TagLabelH);
+                _tagTwo.frame = CGRectMake(self.width- CenterViewW - space - tagW1, TagLabelH, tagW1, TagLabelH);
                 _tagTwo.hidden = YES;
                 _tagTwo.leftPoint = CGPointMake(_tagTwo.x, TagLabelH*2);
                 _tagTwo.rightPoint = CGPointMake(_tagTwo.x + tagW1, TagLabelH*2);
